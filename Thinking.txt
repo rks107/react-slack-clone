@@ -1,0 +1,23 @@
+Steps:
+1. WireFraming - Draw a rough sketch of what you are actually building
+2. Functionality
+  * Sign in
+  * Sign up
+  * Create a channel
+  * Send message in a channel
+  * join a channel
+  * Search a channel
+ 3. Data
+  * Users
+  * channel
+  * messages
+4. UI Components
+  * Sidebar
+   * ListOfChannel
+   * ListOfDirectMessages
+  * MainContainer
+    * Header
+    * MessageComponent
+    * CreateMessageComponent
+  * SignIn
+  * SignUp
