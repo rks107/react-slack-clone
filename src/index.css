@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.signin-form {
+  margin: 100px auto;
+  width: 500px;
+  border: 1px solid black;
+  padding: 10px;
+}
+.signin-form h1 {
+  text-align: center;
+  margin: 20px;
+}
+
+.signin-form button {
+  font-size: large;
+  margin: 20px;
+  cursor: pointer;
+  background-color: azure;
+}

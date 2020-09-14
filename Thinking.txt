@@ -12,6 +12,7 @@ Steps:
   * channel
   * messages
 4. UI Components
+*SlackComponent
   * Sidebar
    * ListOfChannel
    * ListOfDirectMessages

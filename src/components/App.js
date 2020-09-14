@@ -4,7 +4,7 @@ import { SignIn } from './';
 function App() {
   return (
     <div className="App">
-      Hello World
+      Slack
       <SignIn />
     </div>
   );

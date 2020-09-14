@@ -20,6 +20,7 @@ npm start
 
 # Project Structure
 
+```
 src
 ├── components
 │   ├── App.js
@@ -27,3 +28,4 @@ src
 │   └── index.js
 ├── index.css
 └── index.js
+```
