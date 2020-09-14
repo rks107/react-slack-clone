@@ -1,4 +1,5 @@
 # Create a new project
+
 make sure you have npm, node and create-react-app tool
 
 ```
@@ -16,3 +17,13 @@ git clone https://github.com/rks107/react-slack-clone.git
 ```
 npm start
 ```
+
+# Project Structure
+
+src
+├── components
+│   ├── App.js
+│   ├── SignIn.js
+│   └── index.js
+├── index.css
+└── index.js
