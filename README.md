@@ -24,8 +24,23 @@ npm start
 src
 ├── components
 │   ├── App.js
+│   ├── MainContainer.js
+│   ├── Sidebar.js
 │   ├── SignIn.js
+│   ├── Slack.js
 │   └── index.js
+├── firebase.js
 ├── index.css
-└── index.js
+├── index.js
+└── providers
+    └── UserProvider.js
+```
+
+# Hosting the project on Firbase
+
+```
+  npm run build
+  npm i -g firebase-tools
+  firebase login
+  firebase deploy
 ```
