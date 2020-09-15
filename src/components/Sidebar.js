@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { signOut } from '../firebase';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
     render() {
+      const { channels } = this.props;
+      console.log("CHANNLS=",channels);
         return (
           <div id="sidebar">
             <div className="user-profile">
@@ -27,8 +30,11 @@ class Sidebar extends Component {
               <div className="header">Channels</div>
 
               <ul className="channels-list">
-                <li># assignment</li>
-                <li># test</li>
+                {channels.map((channel) => (
+                  <li key={channel.id}>
+                    <Link to={`/?id=${channel.id}`}># {channel.name}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
