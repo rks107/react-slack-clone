@@ -1,42 +1,37 @@
 import React, { Component, createContext } from 'react';
-import { auth, createOrGetUserProfileDocument } from '../firebase';
+import { auth } from '../firebase';
+import { createOrGetUserProfileDocument } from '../firebase';
 
-const initialUserState = { user: null, loading: false };
+const initialUserState = { user: null, loading: true };
 export const UserContext = createContext(initialUserState);
 
 class UserProvider extends Component {
   state = initialUserState;
 
-  async componentDidMount() {
-    //will be fired whenever you go from logged in to logged out stateor vice-versa
-    auth.onAuthStateChanged( async (userAuth) => {
-      console.log(userAuth);
-
+  componentDidMount = async () => {
+    /* Will be fired whenever user goes from loggedin to log out state or vice versa */
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createOrGetUserProfileDocument(userAuth);
 
-        console.log("USER REF", userRef);
-
-        userRef.onSnapshot( snapshot => {
-          console.log('snampshot', snapshot);
-          console.log('snap shot data', snapshot.data);
-
+        // Attach listener to listen to user changes in firestore
+        userRef.onSnapshot((snapshot) => {
           this.setState({
-            user: {uid: snapshot.id, ...snapshot.data()}
-          })
-        })
+            user: { uid: snapshot.id, ...snapshot.data() },
+            loading: false,
+          });
+        });
       }
+      this.setState({ user: userAuth, loading: false });
     });
-
-    
-  }
-  
+  };
 
   render() {
-    console.log(this.props);
+    const { user, loading } = this.state;
+    const { children } = this.props;
     return (
-      <UserContext.Provider value={this.state}>
-        {this.props.children}
+      <UserContext.Provider value={{ user, loading }}>
+        {children}
       </UserContext.Provider>
     );
   }

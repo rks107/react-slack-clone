@@ -1,8 +1,19 @@
-import React, { Component } from "react";
-import { signInWithGoogle, signOut } from '../firebase';
+import React, { useContext } from 'react';
+import { Redirect } from 'react-router-dom';
+import { UserContext } from '../providers/UserProvider';
+import { signInWithGoogle} from '../firebase';
 
-class SignIn extends Component {
-  render() {
+function SignIn(props) {
+  const auth = useContext(UserContext);
+  // const { from } = props.location.state || {
+  //   from: { pathname: '/home' },
+  // };
+
+  // Redirect the user if not logged in
+  if (auth.user) {
+    return <Redirect to="/" />;
+  }
+
     return (
       <div className="signin-form">
         <h1>Sign In/ Sign Up</h1>
@@ -18,12 +29,8 @@ class SignIn extends Component {
           <img src="https://cdn2.iconfinder.com/data/icons/social-icons-33/128/Google-256.png" alt="pic"/>
           Sign up with Google
         </button>
-
-        <br></br>
-        <button onClick={signOut}>Logout</button>
       </div>
     );
-  }
 }
 
 export default SignIn;
