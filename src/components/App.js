@@ -9,7 +9,6 @@ function Home() {
 function App() {
   return (
     <div className="App">
-      Slack
       <Switch>
         <Route exact path="/" component={SignIn} />
         <Route exact path="/home" component={Home} />

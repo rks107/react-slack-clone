@@ -18,6 +18,8 @@ firebase.initializeApp(firebaseConfig);
 export const auth =  firebase.auth();
 
 export const signInWithGoogle = () => {
+    //Initilation of google provider
     const googleProvider = new firebase.auth.GoogleAuthProvider();
+    //ask user to select gamil account in a new popup windowy
     auth.signInWithPopup(googleProvider);
 }
