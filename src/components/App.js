@@ -37,6 +37,16 @@ function App() {
 
   return (
     <div>
+      <div className="githublink">
+        <a href="https://github.com/rks107/react-slack-clone">
+          <img
+            src="https://www.flaticon.com/svg/static/icons/svg/2111/2111432.svg"
+            target="_blank"
+            alt="Github-Icon"
+            height="25px"
+          />
+        </a>
+      </div>
       <Switch>
         <Route exact path="/login" component={SignIn} />
         <Route exact path="/signup" component={SignIn} />

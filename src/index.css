@@ -232,3 +232,9 @@ code {
   padding: 5px;
   font-weight: 900;
 }
+
+.githublink {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
