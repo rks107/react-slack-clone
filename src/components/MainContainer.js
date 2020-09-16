@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { firestore, auth } from '../firebase';
 
 function MainContainer(props) {
+  console.log("CHANNEL", props);
   const { channel } = props;
   const [messages, setMessages] = useState([]);
   const [userMessage, setUserMessage] = useState('');
@@ -12,13 +13,14 @@ function MainContainer(props) {
     firestore
       .collection('messages')
       .where('channel', '==', channel.id)
-      // .orderBy('created_at', 'asc')
+      .orderBy('created_at', 'asc')
       .get()
       .then((snapshot) => {
         // const channels = snapshot.docs;
         const messages = snapshot.docs.map((doc) => {
           return { id: doc.id, ...doc.data() };
         });
+        // console.log('############', messages[0].from.name);
         setMessages(messages);
       })
       .catch((error) => {
@@ -35,7 +37,9 @@ function MainContainer(props) {
   }
 
   function onEnterPress(e) {
+    
     if (e.keyCode === 13 && channel.id && userMessage) {
+      console.log('ENter Clicked');
       e.preventDefault();
       const data = {
         from: {
@@ -55,6 +59,7 @@ function MainContainer(props) {
         });
     }
   }
+  
 
   return (
     <div id="main-container">
@@ -74,8 +79,8 @@ function MainContainer(props) {
             </div>
             <div className="right-block">
               <div className="user">
-                <div>{message.from.name}</div>
-                <span>1:21 PM</span>
+                <div>{`${message.from.name}`}</div>
+                <span>{`${message.created_at.toDate()}`}</span>
               </div>
               <div className="user-message">{message.text}</div>
             </div>

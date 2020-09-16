@@ -176,3 +176,8 @@ code {
   margin-bottom: 12px;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.channels-group {
+  display: flex;
+  justify-content: space-around;
+}
