@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { firestore, auth } from '../firebase';
 
 function MainContainer(props) {
-  console.log("CHANNEL", props);
   const { channel } = props;
   const [messages, setMessages] = useState([]);
   const [userMessage, setUserMessage] = useState('');
@@ -45,6 +44,7 @@ function MainContainer(props) {
         from: {
           id: auth.currentUser.uid,
           name: auth.currentUser.displayName,
+          avtarURL: auth.currentUser.photoURL,
         },
         text: userMessage,
         channel: channel.id,
@@ -73,7 +73,9 @@ function MainContainer(props) {
           <div className="message" key={message.id}>
             <div className="left-block">
               <img
-                src="https://ca.slack-edge.com/T0188513NTW-U01867WD8GK-ga631e27835b-72"
+                style={{ borderRadius: '50%' }}
+                src={`${message.from.avtarURL}`}
+                // "https://ca.slack-edge.com/T0188513NTW-U01867WD8GK-ga631e27835b-72"
                 alt="pic"
               />
             </div>

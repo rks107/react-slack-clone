@@ -29,7 +29,7 @@ const PrivateRoute = ({ component: Component, isLoggedIn, ...others }) => {
 
 function App() {
   const auth = useContext(UserContext);
-  console.log('App -> auth', auth);
+  // console.log('App -> auth', auth);
 
   if (auth.loading) {
     return <h1>Loading!</h1>;

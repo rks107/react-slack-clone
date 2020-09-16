@@ -16,7 +16,7 @@ function Slack(props) {
   let channelId = query.get('id');
 
   useEffect(() => {
-    console.log('HOLA', auth.currentUser.uid);
+    // console.log('HOLA', auth.currentUser.uid);
     firestore
       .collection('channels')
       .where('members', 'array-contains', auth.currentUser.uid)
